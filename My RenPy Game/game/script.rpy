@@ -120,7 +120,46 @@ label threat_route1:
     me "How did you get this number?"
     unknown "the same way i got your address."
     unknown "you think you're playing detective on zoey's case."
-    unknown ""
+    unknown "but you're just putting the people you care about in line of fire."
+    jump threat_details
+
+label threat_route2:
+    me "If you're trying to intimidate me, it won't work."
+    unknown "is that so?"
+    unknown "you sound brave on a keyboard."
+    unknown "let's see if you stay brave when your family pays for it."
+    jump threat_details
+
+label threat_details:
+    unknown "your daughter walks alone from school around 4, right?"
+    unknown "and your wife usually leaves her back door unlocked when she works in the garden."
+
+    me "Don't you dare touch them."
+     
+    unknown "then drop the case."
+    unknown "turn around, delete these chat logs, and forget the name zoey ever existed."
+    unknown "if you push any further with the river trail..."
+    unknown "there won't be a text next time."
+
+    system "---User has disconnected ---"
+
+    me "They know about my daughter... how deep does this go?"
+    
+    menu:
+        "Ignore the threat and head to the river trail anyway.":
+            jump go_to_river
+        "Call my wife to make sure my daughter is safe.":
+            jump call_wife
+
+label go_to_river:
+    me "I can't let them intimidate me. Zoey might not have much time left."
+    return
+
+label call_sister:
+    me "I need to make sure she's safe before I make my next move."
+    return
+
+
 
 
 
