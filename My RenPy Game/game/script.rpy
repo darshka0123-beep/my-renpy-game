@@ -82,7 +82,7 @@ label code_correct:
     catlover306 "Good. Listen to the Background noise in that recording."
     me "It sounds like running water... and echo?"
     catlover306 "She was taken near the tunnel under the ridge."
-    jump final_sequence
+    jump final_sequence_wcatlover
 
 label code_wrong:
     system "---Access Denied: 2 Attempts Remaining ---"
@@ -212,7 +212,7 @@ label enter_tunnel:
     "Sarah" "I just went to check her..the window was open..."
     "Sarah" "Our daughter is gone!" 
 
-    me "No... no, no, no"!:
+    me "No... no, no, no!"
 
     system "--- Incoming Text Message: unknown ---"
      
