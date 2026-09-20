@@ -5,9 +5,10 @@ define system = Character("System", color="#8e44ad")
 define unknown = Character("unknown", color="#990000")
 
 label start:
+# This Sets the Background to pure blac to make it eerier. 
     scene expression  "#000"
 
-    system "--- Incoming Text Message: catlover306 Number ---"
+    system "--- Incoming Text Message: catlover306 ---"
     catlover306 "Is this the detective handling the Elmwood case?"
 
     menu:
@@ -55,7 +56,7 @@ label continuation_1:
             jump branch_location
 
 label branch_plant:
-    me "Who plant it?"
+    me "Who would plant it?"
     catlover306 "Someone inside the group from the party."
     catlover306 "They're trying to frame the host."
     jump continuation_2
@@ -103,7 +104,7 @@ $ renpy.pause(3)
 
 system "--- Incoming Text Message: Unknown Number ---"
 
-unknown "I wouldn't go near that river if i were you."
+unknown "i wouldn't go near that river if i were you."
 
 me "Who is this? Is that you catlover?"
 
@@ -153,11 +154,71 @@ label threat_details:
 
 label go_to_river:
     me "I can't let them intimidate me. Zoey might not have much time left."
+    
+
+label call_wife:
+    me "I need to make sure she's safe before I make my next move."
+
+    system "--- Dialing: Sara ---"
+    
+    $ renpy.pause(1.5)
+    
+    system "---Connected---"
+
+    me "Hey! Are you okay? Is everything fine at home?"
+    "Sara" "Yeah, I'm just making dinner. Why do you sound so worried?"
+    me "No reason... just checking in. Stay inside tonight, okay?"
+    "Sara" "Alright... drive safe coming home."
+
+    me "They're fine. It was just a bluff to throw me off"
+    me "I'm heading to the river trail."
+    jump river_trail_arrival
+
+label river_trail_arrival:
+    scene expression "#000"
+
+    me "It's freezing here."
+    me "There's a gate with a lock on it. I need to find a four-digit code that opens it."
+
+# Puzzle
+$ passcode = ""
+$ passcode = renpy.input("Enter 4-digit passcode:", length=4)
+$ passcode = passcode.strip()
+
+if passcode == "1024":
+    system "---ACCESS GRANTED: Gate Unlocked---"
+    jump enter_tunnel
+else:
+    system "---ACCESS DENIED: Invalid Code ---"
+    me "That didn't work. Let me check my notes... October 24th was the date of the party (1024)."
+    $ passcode = renpy.input("Enter 4-digit passcode:", length=4)
+    system "---OVERRIDE ACCEPTED---"
+    jump enter_tunnel
+
+label enter_tunnel:
+    me "The heavy metal door creaks open..."
+
+    # Text notification interrupts
+    system "--- Incoming Text Message: unknown ---"
+
+    unknown "i told you."
+
+    me "What? How do they know I opened the gate?!"
+    # Incoming call
+    system "--- Incoming Call: Sara ---"
+
+    "Sara" "Someone..Someone took her."
+    me "Sarah?! What happened?! Who took who?!"
+    "Sarah" "I just went to check her..the window was open..."
+    "Sarah" "Our daughter is gone!" 
+
+    me "No... no, no, no"!:
+
+    system "--- Incoming Text Message: unknown ---"
+     
+    unknown "now you're going to listen to me."
     return
 
-label call_sister:
-    me "I need to make sure she's safe before I make my next move."
-    return
 
 
 
