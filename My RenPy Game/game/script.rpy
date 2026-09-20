@@ -26,12 +26,20 @@ label branch_who:
     unkown "Check the traffic cameras near the highway intersection."
     jump continuation_1
 
-label branch_wrong:
-    me "Wrong number."
-    unknown "Don't play games with me."
+label branch_business:
+    me "Yes. State your business."
+    unkown "Straight to the point. I like it."
     unkown "I have the footage from the night Zoey went missing."
     me "Footage? Where did you get that?"
     unknown "Let's just say I have access to things the local police missed."
+    jump continuation_1
+
+label branch_wrong:
+    me "Wrong number."
+    unknown "Don't play games with me."
+    unknown "I know you picked up Zoey's case file this morning."
+    me "Fine. What do you want?"
+    unknown "I want to make sure the right person finds her before it's too late."
     jump continuation_1
 
 label branch_wrong:
@@ -42,3 +50,28 @@ label branch_wrong:
     menu:
         "Who would plant it?":
             jump branch_plant
+        "Where is Zoey right now?":
+            jump branch_location
+
+label branch_plant:
+    me "Who plant it?"
+    unknown "Someone inside the group from the party."
+    unknown "They're trying to frame the host."
+    jump continuation_2
+
+label branch_location:
+    me "Where is Zoey right now?"
+    unknown "I can't give you the exact coordinates over an unsecured line."
+    unknown "But I can tell you where to start looking. The old trail entrance near the river."
+    jump continuation_2
+
+label continuation_2:
+    unkown "I'm sending you an encrypted file."
+    system "--- Downloading attachment: audio_log_04.wav ---"
+
+    menu:
+        "Try 1024":
+            jump code_correct
+        "Try 1101":
+            jump code_incorrect
+    
